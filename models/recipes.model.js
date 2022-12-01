@@ -2,40 +2,46 @@ import { Schema, model } from "mongoose";
 
 const userSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-      minLength: 2,
-      maxLength: 20,
-      lowercase: true,
-    },
-    age: {
-      type: Number,
-      min: 18,
-      max: 100,
-    },
-    email: {
+    title: {
       type: String,
       required: true,
       unique: true,
       lowercase: true,
-      match: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/,
     },
-    role: {
+    level: {
       type: String,
-      enum: ["professora", "aluno", "ta"],
-      default: "aluno",
+      enum: ["Easy Peasy", "Amateur Chef", "UltraPro Chef"],
+      default: "Easy Peasy",
     },
-    active: {
-      type: Boolean,
-      default: true,
+    ingredients: [{ type: String }],
+    cuisine: {
+      type: String,
+      required: true,
+      lowercase: true,
     },
-    tasks: [{ type: String }],
-    birth: { type: Date },
-    address: {
-      city: { type: String },
-      state: { type: String },
+    dishType: {
+      type: String,
+      enum: [
+        "breakfast",
+        "main_course",
+        "soup",
+        "snack",
+        "drink",
+        "dessert",
+        "other",
+      ],
+      default: "Easy Peasy",
+    },
+    image: {
+      type: String,
+      default: "https://images.media-allrecipes.com/images/75131.jpg",
+    },
+    duration: {
+      type: Number,
+      min: 0,
+    },
+    creator: {
+      type: String,
     },
   },
   {

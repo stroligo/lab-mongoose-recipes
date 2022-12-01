@@ -1,7 +1,7 @@
 import express from "express";
 const recipesRoute = express.Router();
 
-/* import recipeModel from "../models/recipes.model.js"; */
+import recipeModel from "../models/recipes.model.js";
 
 recipesRoute.get("/", async (req, res) => {
   try {
